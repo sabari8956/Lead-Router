@@ -37,26 +37,69 @@ A complete full-stack application that bridges Telegram messages to ClickUp task
 
 ## 📋 Prerequisites
 
-- Python 3.8+
-- Node.js (optional, for serving frontend)
-- Telegram Bot Token (from [@BotFather](https://t.me/botfather))
-- OpenRouter API Key
-- Gemma model access (google/gemma-3-27b-it:free)
-- ClickUp API Key and List ID
+- Python 3.9+ (if running without Docker)
+- [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) (recommended)
+- Telegram Bot Token ([@BotFather](https://t.me/botfather))
+- OpenRouter API Key ([openrouter.ai](https://openrouter.ai/))
+- ClickUp API Key and List ID (Optional for local mode)
 
-## 🐳 Docker Setup (Recommended)
+---
 
-### 1. Configure Environment
-Create a `.env` file with your credentials (see .env.example).
+## � Getting Started
 
-### 2. Run with Docker Compose
-```bash
-docker-compose up --build
-```
+### Option 1: Docker (Recommended)
+This is the easiest way to get everything running in one go.
 
-That's it! 
-- **Dashboard**: [http://localhost:8000](http://localhost:8000)
-- **Backend API**: [http://localhost:5001](http://localhost:5001)
+1. **Configure Environment**
+   Create a `.env` file in the root directory:
+   ```env
+   TELEGRAM_BOT_TOKEN=your_token
+   OPENROUTER_API_KEY=your_key
+   CLICKUP_API_KEY=your_key
+   CLICKUP_LIST_ID=your_id
+   ```
+
+2. **Run with Compose**
+   ```bash
+   docker-compose up --build
+   ```
+
+3. **Access the Apps**
+   - **Dashboard**: [http://localhost:8000](http://localhost:8000)
+   - **Backend API**: [http://localhost:5001](http://localhost:5001)
+
+---
+
+### Option 2: Manual Setup (Run as Code)
+Use this if you want to develop or run services individually.
+
+1. **Setup Backend**
+   ```bash
+   cd backend
+   python3 -m venv venv
+   source venv/bin/activate  # or venv\Scripts\activate on Windows
+   pip install -r requirements.txt
+   python app.py
+   ```
+   *Backend runs on `http://localhost:5001`*
+
+2. **Setup Telegram Bot**
+   ```bash
+   # From root directory
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   python src/bot.py
+   ```
+
+3. **Open Frontend**
+   Simply open `frontend/index.html` in your browser, or serve it:
+   ```bash
+   cd frontend
+   python3 -m http.server 8000
+   ```
+
+---
 
 ## 📱 Usage
 
@@ -119,7 +162,7 @@ That's it!
 - Ensure `OPENROUTER_API_KEY` is set correctly
 
 ### Dashboard shows no leads
-- Make sure the backend API is running on port 5000
+- Make sure the backend API is running on port 5001
 - Check browser console for errors
 - Verify ClickUp credentials are correct
 
