@@ -1,0 +1,7 @@
+.env
+.venv
+venv-mac/
+__pycache__/
+*.pyc
+.DS_Store
+leads_storage.json
