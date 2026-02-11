@@ -44,70 +44,19 @@ A complete full-stack application that bridges Telegram messages to ClickUp task
 - Gemma model access (google/gemma-3-27b-it:free)
 - ClickUp API Key and List ID
 
-## 🔧 Installation
+## 🐳 Docker Setup (Recommended)
 
-### 1. Clone and Setup Environment
+### 1. Configure Environment
+Create a `.env` file with your credentials (see .env.example).
 
+### 2. Run with Docker Compose
 ```bash
-cd c:\Users\sajan\.gemini\antigravity\scratch\project
+docker-compose up --build
 ```
 
-### 2. Configure Environment Variables
-
-Edit the `.env` file with your credentials:
-
-```env
-TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-OPENROUTER_API_KEY=your_openrouter_api_key
-CLICKUP_API_KEY=your_clickup_api_key
-CLICKUP_LIST_ID=your_clickup_list_id
-```
-
-### 3. Install Dependencies
-
-**For the Telegram Bot:**
-```bash
-pip install -r requirements.txt
-```
-
-**For the Backend API:**
-```bash
-cd backend
-pip install -r requirements.txt
-cd ..
-```
-
-## 🚀 Running the Application
-
-You need to run **THREE** components:
-
-### 1. Start the Telegram Bot
-
-```bash
-python src/bot.py
-```
-
-The bot will start polling for messages. Send a message to your Telegram bot to test it!
-
-### 2. Start the Backend API
-
-```bash
-cd backend
-python app.py
-```
-
-The API will run on `http://localhost:5000`
-
-### 3. Open the Dashboard
-
-Open `frontend/index.html` in your web browser, or serve it with a simple HTTP server:
-
-```bash
-cd frontend
-python -m http.server 8000
-```
-
-Then visit: `http://localhost:8000`
+That's it! 
+- **Dashboard**: [http://localhost:8000](http://localhost:8000)
+- **Backend API**: [http://localhost:5001](http://localhost:5001)
 
 ## 📱 Usage
 

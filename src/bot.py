@@ -31,6 +31,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     logger.info(f"Processing message: {user_text}")
 
+    backend_url = os.getenv("BACKEND_URL", "http://backend:5001")
     # BACKUP REMOVED: Relying entirely on Agent Tool Calls to avoid duplicate/spam leads.
 
     # AI Processing

@@ -30,9 +30,9 @@ def create_lead_task(name: str, phone: str, intent: str, details: str):
     """Creates a lead task in ClickUp and reports to Local Dashboard."""
     data = {"name": name, "phone": phone, "intent": intent, "original_text": details}
     
-    # 1. Report to Local Dashboard (100% reliability for UI)
+    backend_url = os.getenv("BACKEND_URL", "http://backend:5001")
     try:
-        requests.post("http://localhost:5001/api/webhook/lead", json=data, timeout=2)
+        requests.post(f"{backend_url}/api/webhook/lead", json=data, timeout=2)
     except Exception as e:
         print(f"Local dashboard sync failed: {e}")
 
